@@ -1,7 +1,7 @@
 # App Center Github Action
 
-![Sample workflow for App Center action](https://github.com/wzieba/AppCenter-Github-Action/workflows/Sample%20workflow%20for%20App%20Center%20action/badge.svg?branch=master)
-<a href="https://github.com/wzieba/AppCenter-Github-Action/releases">![](https://img.shields.io/github/v/release/wzieba/AppCenter-Github-Action)</a>
+![Sample workflow for App Center action](https://github.com/devussy/AppCenter-Distribute-Github-Action/workflows/Sample%20workflow%20for%20App%20Center%20action/badge.svg?branch=master)
+<a href="https://github.com/devussy/AppCenter-Distribute-Github-Action/releases">![](https://img.shields.io/github/v/release/devussy/AppCenter-Distribute-Github-Action)</a>
 
 This action uploads artifacts (.apk or .ipa) to Visual Studio App Center.
 
@@ -9,7 +9,7 @@ This action uploads artifacts (.apk or .ipa) to Visual Studio App Center.
 
 ### `appName`
 
-**Required** username followed by App name e.g. `wzieba/Sample-App`
+**Required** username followed by App name e.g. `devussy/Sample-App`
 
 ### `token`
 
@@ -24,9 +24,11 @@ This action uploads artifacts (.apk or .ipa) to Visual Studio App Center.
 **Required** Artifact to upload (.apk or .ipa)
 
 ### `buildVersion`
+
 Build version parameter required for .zip, .msi, .pkg and .dmg files
 
 ### buildNumber
+
 Build number parameter required for macOS .pkg and .dmg files
 
 ### `releaseNotes`
@@ -71,9 +73,9 @@ jobs:
     - name: build release
       run: ./gradlew assembleRelease
     - name: upload artefact to App Center
-      uses: wzieba/AppCenter-Github-Action@v1
+      uses: devussy/AppCenter-Distribute-Github-Action@v1.0.3
       with:
-        appName: wzieba/Sample-App
+        appName: devussy/Sample-App
         token: ${{secrets.APP_CENTER_TOKEN}}
         group: Testers
         file: app/build/outputs/apk/release/app-release-unsigned.apk
