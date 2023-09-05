@@ -32,6 +32,7 @@ for group in $INPUT_GROUP; do
         downloadUrl=$(appcenter distribute releases show --token "$INPUT_TOKEN"  --app "$INPUT_APPNAME" --release-id "$releaseId" --output json | grep -o '"[^"]*"\s*:\s*"[^"]*"' | grep -E '^"downloadUrl"' | cut  -d ':' -f 2,3 | tr -d '"')
         
         echo "APPCENTER_DOWNLOAD_LINK=$downloadUrl" >> "$GITHUB_ENV"
+        echo "APPCENTER_RELEASE_ID=$releaseId" >> "$GITHUB_ENV"
     else
         appcenter distribute releases add-destination --token "$INPUT_TOKEN" -d $group -t group -r $releaseId --app "$INPUT_APPNAME" "${params[@]}"
     fi
